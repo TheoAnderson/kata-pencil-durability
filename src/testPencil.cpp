@@ -123,4 +123,28 @@ TEST_CASE("Pencil class tests") {
       tenDurPencil.write(paper, "12345");
       REQUIRE(paper == "1234512345678901234567890     ");
    }
+
+   SECTION("pencils with zero length") {
+      Pencil shorty(10, 0);
+      shorty.write(paper, "Who lives in a pineapple");
+      shorty.sharpen();
+      shorty.write(paper, " under the sea?");
+      REQUIRE(paper == "Who lives i                            ");
+   }
+
+   SECTION("pencil with zero length and zero durability") {
+     Pencil zero(0, 0);
+     zero.write(paper, "ALAMO");
+     zero.sharpen();
+     zero.write(paper, " FORT");
+     REQUIRE(paper == "          ");
+   }
+
+   SECTION("sharpen many times") {
+      for (int k = 0; k < 1000000; k++) {
+         tenDurPencil.sharpen();
+      }
+      tenDurPencil.write(paper, "kamiwaza wanda");
+      REQUIRE( paper ==         "kamiwaza wa   ");
+   }
 }
