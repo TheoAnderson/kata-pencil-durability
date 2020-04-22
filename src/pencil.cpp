@@ -21,6 +21,9 @@ void Pencil::write(std::string& paper, const std::string& text) {
             if (this->durability  > 0) {
                this->durability--; //second decrement;
             }
+            else {
+               newText[k] = Pencil::ILLEGIBLE;
+            }
          }
       }
       else {

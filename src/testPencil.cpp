@@ -60,4 +60,9 @@ TEST_CASE("Pencil class tests") {
       tenDurPencil.write(paper, "ALPHA OMEGA");
       REQUIRE( paper ==         "ALPHA      ");
    }
+
+   SECTION("write capital when durabillity is one") {
+      tenDurPencil.write(paper, "ABCDeF");
+      REQUIRE( paper ==         "ABCDe@");
+   }
 }

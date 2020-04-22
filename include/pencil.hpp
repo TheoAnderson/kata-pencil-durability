@@ -11,6 +11,7 @@ class Pencil {
       //write text to the end of paper
       void write(std::string& paper, const std::string& text);
 
+      const static char ILLEGIBLE = '@';
    private:
       unsigned int durability;
 };
