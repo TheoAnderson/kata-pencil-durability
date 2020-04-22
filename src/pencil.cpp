@@ -8,5 +8,14 @@ Pencil::Pencil(unsigned int pencilDurability) {
 Pencil::~Pencil() {}
 
 void Pencil::write(std::string& paper, const std::string& text) {
-   paper += text;
+   std::string newText(text);
+   for (unsigned int k = 0; k < text.size(); k++) {
+      if (this->durability > 0) {
+         this->durability--;
+      }
+      else {
+         newText[k] = ' ';
+      }
+   }
+   paper += newText;
 }

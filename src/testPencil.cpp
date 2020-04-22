@@ -43,4 +43,11 @@ TEST_CASE("Pencil class tests") {
       REQUIRE(paper == "To be or not to be? That is the question.");
       REQUIRE(paper2 == "Four score and seven years ago, our fathers...");
    }
+
+   Pencil tenDurPencil(10);
+
+   SECTION("durability test with no upper case, whitespace") {
+      tenDurPencil.write(paper, "abcdeabcdeabcde");
+      REQUIRE( paper == "abcdeabcde     ");
+   }
 }
