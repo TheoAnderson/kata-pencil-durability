@@ -1,1 +1,6 @@
+#ifndef KATAPENCILDURABILITY_PENCIL_HPP
+#define KATAPENCILDURABILITY_PENCIL_HPP
+
 int helloWorld();
+
+#endif
