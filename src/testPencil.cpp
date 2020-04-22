@@ -94,4 +94,21 @@ TEST_CASE("Pencil class tests") {
       REQUIRE(paper == "ABCDE 0123456789        ");
    }
 
+   SECTION("sharpen pencil with zero durability") {
+      Pencil pen(0);
+      pen.sharpen();
+      pen.write(paper, "rock and");
+      pen.sharpen();
+      pen.write(paper, " roll");
+      REQUIRE(paper == "             ");
+   }
+
+   SECTION("durability and sharpen rules persist between paper") {
+      tenDurPencil.write(paper, "abcde");
+      tenDurPencil.sharpen();
+      tenDurPencil.write(paper2, "It's dangerous");
+      tenDurPencil.write(paper, " to go alone.");
+      REQUIRE( paper2 ==         "It's dange    ");
+      REQUIRE( paper == "abcde             ");
+   }
 }
