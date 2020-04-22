@@ -55,4 +55,9 @@ TEST_CASE("Pencil class tests") {
       tenDurPencil.write(paper, "\n     abcde\n     abcdeabcde\n");
       REQUIRE( paper ==         "\n     abcde\n     abcde     \n");
    }
+
+   SECTION("capital letters reduce durability by two") {
+      tenDurPencil.write(paper, "ALPHA OMEGA");
+      REQUIRE( paper ==         "ALPHA      ");
+   }
 }
