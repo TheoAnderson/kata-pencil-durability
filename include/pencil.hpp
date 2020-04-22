@@ -5,7 +5,7 @@
 
 class Pencil {
    public:
-      Pencil(unsigned int pencilDurability, unsigned int pencilLength);
+      Pencil(unsigned int pencilDurability, unsigned int pencilLength, unsigned int eraserDurability);
       ~Pencil();
       
       //write text to the end of paper
@@ -23,5 +23,6 @@ class Pencil {
       unsigned int durability;
       unsigned int initialDurability;
       unsigned int length;
+      unsigned int eraserLength;
 };
 #endif

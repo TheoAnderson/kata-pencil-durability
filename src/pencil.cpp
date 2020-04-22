@@ -3,9 +3,10 @@
 #include <iostream>
 #include <cctype>
 
-Pencil::Pencil(unsigned int pencilDurability, unsigned int pencilLength) {
+Pencil::Pencil(unsigned int pencilDurability, unsigned int pencilLength, unsigned int eraserDurability) {
    this->initialDurability = this->durability = pencilDurability;
    this->length = pencilLength;
+   this->eraserLength = eraserDurability;
 }
 
 Pencil::~Pencil() {}

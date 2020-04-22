@@ -4,9 +4,9 @@
 #include "../include/pencil.hpp"
 
 TEST_CASE("Pencil class tests") {
-   Pencil pencil(100, 100);
-   Pencil pencil2(100, 100);
-   Pencil tenDurPencil(10, 3);
+   Pencil pencil(100, 100, 100);
+   Pencil pencil2(100, 100, 100);
+   Pencil tenDurPencil(10, 3, 100);
    std::string paper("");
    std::string paper2("");
 
@@ -66,22 +66,22 @@ TEST_CASE("Pencil class tests") {
    }
 
    SECTION("Durability examples from documentation") {
-      Pencil pen(4, 10);
+      Pencil pen(4, 10, 100);
       pen.write(paper, "text");
       REQUIRE(paper == "text");
-      Pencil pen2(4, 10);
+      Pencil pen2(4, 10, 100);
       pen2.write(paper2, "Text");
       REQUIRE(paper2 ==  "Tex ");
    }
 
    SECTION("Durability is set to zero") {
-      Pencil pen(0, 10);
+      Pencil pen(0, 10, 100);
       pen.write(paper, "Bamboozle");
       REQUIRE(paper == "         ");
    }
 
    SECTION("Durability with non-alphabetic characters") {
-      Pencil pen(29, 10);
+      Pencil pen(29, 10, 100);
       pen.write(paper, "1234567890()[]<>?~!@#$%^&*|\"-ABCDE");
       REQUIRE(paper == "1234567890()[]<>?~!@#$%^&*|\"-     ");
 
@@ -95,7 +95,7 @@ TEST_CASE("Pencil class tests") {
    }
 
    SECTION("sharpen pencil with zero durability") {
-      Pencil pen(0, 10);
+      Pencil pen(0, 10, 100);
       pen.sharpen();
       pen.write(paper, "rock and");
       pen.sharpen();
@@ -125,7 +125,7 @@ TEST_CASE("Pencil class tests") {
    }
 
    SECTION("pencils with zero length") {
-      Pencil shorty(10, 0);
+      Pencil shorty(10, 0, 100);
       shorty.write(paper, "Who lives in a pineapple");
       shorty.sharpen();
       shorty.write(paper, " under the sea?");
@@ -133,7 +133,7 @@ TEST_CASE("Pencil class tests") {
    }
 
    SECTION("pencil with zero length and zero durability") {
-     Pencil zero(0, 0);
+     Pencil zero(0, 0, 0);
      zero.write(paper, "ALAMO");
      zero.sharpen();
      zero.write(paper, " FORT");
