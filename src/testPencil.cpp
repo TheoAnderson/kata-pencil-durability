@@ -48,6 +48,11 @@ TEST_CASE("Pencil class tests") {
 
    SECTION("durability test with no upper case, whitespace") {
       tenDurPencil.write(paper, "abcdeabcdeabcde");
-      REQUIRE( paper == "abcdeabcde     ");
+      REQUIRE( paper ==         "abcdeabcde     ");
+   }
+
+   SECTION("whitepsace does not change durability") {
+      tenDurPencil.write(paper, "\n     abcde\n     abcdeabcde\n");
+      REQUIRE( paper ==         "\n     abcde\n     abcde     \n");
    }
 }
