@@ -1,4 +1,19 @@
-# Pencil Durability Kata
+# Build and Run Instructions
+Use the Makefile located in the top file, kata-pencil-durability.
+While in kata-pencil-durability simply enter the command:
+
+	make testSuite
+
+Then to run the pencil tests:
+
+	./testSuite
+
+
+The test suite uses the Catch2 unit testing framework. Catch uses header-only installation, and the appropriate catch header file is already included in the source code in an early commit.
+The code uses the g++ compiler which must already be installed.
+
+
+# Pencil Durability Kata Project Description
 The purpose of the Pencil Durability Kata is to write code to simulate, first coarsely and then more faithfully, an ordinary graphite pencil. It includes writing and editing text, point degradation, using the eraser, and sharpening the pencil. The point of this kata is to provide a larger-than-trivial exercise that can be used to practice TDD. A significant portion of the effort will be in determining which tests should be written and, more importantly, written next.
 
 ## Write
