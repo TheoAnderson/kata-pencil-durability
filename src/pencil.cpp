@@ -4,7 +4,7 @@
 #include <cctype>
 
 Pencil::Pencil(unsigned int pencilDurability) {
-   this->durability = pencilDurability;
+   this->initialDurability = this->durability = pencilDurability;
 }
 
 Pencil::~Pencil() {}
@@ -31,4 +31,8 @@ void Pencil::write(std::string& paper, const std::string& text) {
       }
    }
    paper += newText;
+}
+
+void Pencil::sharpen() {
+   this->durability = this->initialDurability;
 }

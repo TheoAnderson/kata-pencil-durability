@@ -6,6 +6,7 @@
 TEST_CASE("Pencil class tests") {
    Pencil pencil(100);
    Pencil pencil2(100);
+   Pencil tenDurPencil(10);
    std::string paper("");
    std::string paper2("");
 
@@ -43,8 +44,6 @@ TEST_CASE("Pencil class tests") {
       REQUIRE(paper == "To be or not to be? That is the question.");
       REQUIRE(paper2 == "Four score and seven years ago, our fathers...");
    }
-
-   Pencil tenDurPencil(10);
 
    SECTION("durability test with no upper case, whitespace") {
       tenDurPencil.write(paper, "abcdeabcdeabcde");
@@ -87,4 +86,12 @@ TEST_CASE("Pencil class tests") {
       REQUIRE(paper == "1234567890()[]<>?~!@#$%^&*|\"-     ");
 
    }
+
+   SECTION("Restore durability with sharpen") {
+      tenDurPencil.write(paper, "ABCDEF");
+      tenDurPencil.sharpen();
+      tenDurPencil.write(paper, "0123456789sandwich");
+      REQUIRE(paper == "ABCDE 0123456789        ");
+   }
+
 }
