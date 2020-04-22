@@ -5,7 +5,7 @@
 
 class Pencil {
    public:
-      Pencil(unsigned int pencilDurability);
+      Pencil(unsigned int pencilDurability, unsigned int pencilLength);
       ~Pencil();
       
       //write text to the end of paper
@@ -15,8 +15,10 @@ class Pencil {
       void sharpen();
 
       const static char ILLEGIBLE = '@';
+
    private:
       unsigned int durability;
       unsigned int initialDurability;
+      unsigned int length;
 };
 #endif

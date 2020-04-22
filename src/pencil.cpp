@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cctype>
 
-Pencil::Pencil(unsigned int pencilDurability) {
+Pencil::Pencil(unsigned int pencilDurability, unsigned int pencilLength) {
    this->initialDurability = this->durability = pencilDurability;
 }
 
