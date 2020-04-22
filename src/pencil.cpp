@@ -5,6 +5,7 @@
 
 Pencil::Pencil(unsigned int pencilDurability, unsigned int pencilLength) {
    this->initialDurability = this->durability = pencilDurability;
+   this->length = pencilLength;
 }
 
 Pencil::~Pencil() {}
@@ -34,5 +35,9 @@ void Pencil::write(std::string& paper, const std::string& text) {
 }
 
 void Pencil::sharpen() {
+   if (this->length == 0) {
+      return;
+   }
+   this->length--;
    this->durability = this->initialDurability;
 }

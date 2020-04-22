@@ -111,4 +111,16 @@ TEST_CASE("Pencil class tests") {
       REQUIRE( paper2 ==         "It's dange    ");
       REQUIRE( paper == "abcde             ");
    }
+
+   SECTION("sharpen fails after pencil length runs out") {
+      tenDurPencil.write(paper, "12345");
+      tenDurPencil.sharpen();
+      tenDurPencil.write(paper, "1234567890");
+      tenDurPencil.sharpen();
+      tenDurPencil.sharpen();
+      tenDurPencil.write(paper, "1234567890");
+      tenDurPencil.sharpen(); //excess sharpen
+      tenDurPencil.write(paper, "12345");
+      REQUIRE(paper == "1234512345678901234567890     ");
+   }
 }
