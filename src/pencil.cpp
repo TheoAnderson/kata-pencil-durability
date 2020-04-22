@@ -1,6 +1,7 @@
 #include "../include/pencil.hpp"
 #include <iostream>
 
-void helloWorld() {
+int helloWorld() {
    std::cout << "Hello, World!";
+   return 7;
 }
