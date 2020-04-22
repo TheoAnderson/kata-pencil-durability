@@ -4,8 +4,8 @@
 #include "../include/pencil.hpp"
 
 TEST_CASE("Pencil class tests") {
-   Pencil pencil;
-   Pencil pencil2;
+   Pencil pencil(100);
+   Pencil pencil2(100);
    std::string paper("");
    std::string paper2("");
 

@@ -1,7 +1,9 @@
 #include "../include/pencil.hpp"
 #include <iostream>
 
-Pencil::Pencil() {}
+Pencil::Pencil(unsigned int pencilDurability) {
+   this->durability = pencilDurability;
+}
 
 Pencil::~Pencil() {}
 
