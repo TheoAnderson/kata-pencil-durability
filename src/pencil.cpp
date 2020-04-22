@@ -41,3 +41,20 @@ void Pencil::sharpen() {
    this->length--;
    this->durability = this->initialDurability;
 }
+
+void Pencil::erase(std::string& paper, const std::string& text) {
+   if (text.length() > paper.length()) {
+      return;
+   }
+   for (int i = paper.size() - text.size(); i >= 0; i--) {
+      if (text == paper.substr(i, text.length())) {
+         for (int j = 0; j < text.length(); j++) {
+            if (isspace(paper[i + j])) {
+               continue;
+            }
+            paper[i + j] = ' ';
+         }
+         break;
+      }
+   }
+}

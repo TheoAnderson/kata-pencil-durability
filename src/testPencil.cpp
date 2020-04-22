@@ -147,4 +147,12 @@ TEST_CASE("Pencil class tests") {
       tenDurPencil.write(paper, "kamiwaza wanda");
       REQUIRE( paper ==         "kamiwaza wa   ");
    }
+
+   SECTION("erase method: example from documentation") {
+      std::string p("How much wood would a woodchuck chuck if a woodchuck could chuck wood?");
+      pencil.erase(p, "chuck");
+      REQUIRE( p ==   "How much wood would a woodchuck chuck if a woodchuck could       wood?");
+      pencil.erase(p, "chuck");
+      REQUIRE( p ==   "How much wood would a woodchuck chuck if a wood      could       wood?");
+   }
 }

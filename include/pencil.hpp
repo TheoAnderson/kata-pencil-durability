@@ -14,6 +14,9 @@ class Pencil {
       //restore the durability of the pencil
       void sharpen();
 
+      //erase last example of text from paper
+      void erase(std::string& paper, const std::string& text);
+
       const static char ILLEGIBLE = '@';
 
    private:
