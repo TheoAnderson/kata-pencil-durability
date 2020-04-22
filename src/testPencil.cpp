@@ -65,4 +65,26 @@ TEST_CASE("Pencil class tests") {
       tenDurPencil.write(paper, "ABCDeF");
       REQUIRE( paper ==         "ABCDe@");
    }
+
+   SECTION("Durability examples from documentation") {
+      Pencil pen(4);
+      pen.write(paper, "text");
+      REQUIRE(paper == "text");
+      Pencil pen2(4);
+      pen2.write(paper2, "Text");
+      REQUIRE(paper2 ==  "Tex ");
+   }
+
+   SECTION("Durability is set to zero") {
+      Pencil pen(0);
+      pen.write(paper, "Bamboozle");
+      REQUIRE(paper == "         ");
+   }
+
+   SECTION("Durability with non-alphabetic characters") {
+      Pencil pen(29);
+      pen.write(paper, "1234567890()[]<>?~!@#$%^&*|\"-ABCDE");
+      REQUIRE(paper == "1234567890()[]<>?~!@#$%^&*|\"-     ");
+
+   }
 }
