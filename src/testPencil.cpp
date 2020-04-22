@@ -155,4 +155,36 @@ TEST_CASE("Pencil class tests") {
       pencil.erase(p, "chuck");
       REQUIRE( p ==   "How much wood would a woodchuck chuck if a wood      could       wood?");
    }
+
+   SECTION("erase with various whitespace") {
+      std::string p("LORD\tOF\nTHE MOUNTAIN");
+      pencil.erase(p, "RD\tOF\nTHE ");
+      REQUIRE(p ==  "LO  \t  \n    MOUNTAIN");
+   }
+
+   SECTION("erase when substring doesn't exist") {
+      std::string p ("IT'S DANGEROUS TO GO ALONE TAKE THIS");
+      pencil.erase(p, "cream");
+      REQUIRE(p ==   "IT'S DANGEROUS TO GO ALONE TAKE THIS");
+   }
+
+   SECTION("erase when word is at beginning or end of paper") {
+      std::string p ("alpha bravo charlieECHO");
+      pencil.erase(p, "alph");
+      REQUIRE( p ==  "    a bravo charlieECHO");
+      pencil.erase(p, "eECHO");
+      REQUIRE(p ==   "    a bravo charli     ");
+   }
+
+   SECTION("erase empty substring") {
+      std::string p("zard");
+      pencil.erase(p, "");
+      REQUIRE(p ==  "zard");
+   }
+
+  SECTION("erase with close matches") {
+     std::string p("ice iceb icebergceberg ceberg ICEBERG i ceberg grebeci ");
+     pencil.erase(p, "iceberg");
+     REQUIRE( p == "ice iceb        ceberg ceberg ICEBERG i ceberg grebeci ");
+  }
 }
