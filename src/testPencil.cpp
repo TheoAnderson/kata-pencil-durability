@@ -7,6 +7,7 @@ TEST_CASE("Pencil class tests") {
    Pencil pencil(100, 100, 100);
    Pencil pencil2(100, 100, 100);
    Pencil tenDurPencil(10, 3, 100);
+   Pencil shortEraser(100, 2, 3);
    std::string paper("");
    std::string paper2("");
 
@@ -182,9 +183,15 @@ TEST_CASE("Pencil class tests") {
       REQUIRE(p ==  "zard");
    }
 
-  SECTION("erase with close matches") {
-     std::string p("ice iceb icebergceberg ceberg ICEBERG i ceberg grebeci ");
-     pencil.erase(p, "iceberg");
-     REQUIRE( p == "ice iceb        ceberg ceberg ICEBERG i ceberg grebeci ");
-  }
+   SECTION("erase with close matches") {
+      std::string p("ice iceb icebergceberg ceberg ICEBERG i ceberg grebeci ");
+      pencil.erase(p, "iceberg");
+      REQUIRE( p == "ice iceb        ceberg ceberg ICEBERG i ceberg grebeci ");
+   }
+
+   SECTION("eraser degradation: example from documentation") {
+      std::string p("Buffalo Bill");
+      shortEraser.erase(p, "Bill");
+      REQUIRE (p == "Buffalo B   ");            
+   }   
 }

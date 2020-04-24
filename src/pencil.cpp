@@ -49,10 +49,14 @@ void Pencil::erase(std::string& paper, const std::string& text) {
    }
    for (int i = paper.size() - text.size(); i >= 0; i--) {
       if (text == paper.substr(i, text.length())) {
-         for (int j = 0; j < text.length(); j++) {
+         for (int j = text.length() - 1; j >= 0; j--) {
             if (isspace(paper[i + j])) {
                continue;
             }
+            if (this->eraserLength == 0) {
+               return;
+            }
+            this->eraserLength--;
             paper[i + j] = ' ';
          }
          break;
