@@ -219,4 +219,10 @@ TEST_CASE("Pencil class tests") {
       shortEraser.erase(p, "");
       REQUIRE(p ==  "lemma pie");
    }
+
+   SECTION("Edit example from documentation") {
+      std::string p("An       a day keeps the doctor away");
+      pencil.edit(p, "onion" , 3);
+      REQUIRE(p ==  "An onion a day keeps the doctor away");
+   }
 }

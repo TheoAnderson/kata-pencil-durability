@@ -65,5 +65,10 @@ void Pencil::erase(std::string& paper, const std::string& text) {
 }
 
 void Pencil::edit(std::string& paper, const std::string& text, unsigned int startPosition) {
-
+   for (int i = 0; i < text.length() and startPosition + i < paper.length(); i++) {
+      if (isspace(text[i]) or paper[startPosition + i] == text[i]) {
+         continue;
+      }
+      paper[startPosition + i] = text[i];
+   }
 }
