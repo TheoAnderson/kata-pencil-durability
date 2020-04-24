@@ -63,3 +63,7 @@ void Pencil::erase(std::string& paper, const std::string& text) {
       }
    }
 }
+
+void Pencil::edit(std::string& paper, const std::string& text, unsigned int startPosition) {
+
+}

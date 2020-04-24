@@ -17,6 +17,10 @@ class Pencil {
       //erase last example of text from paper
       void erase(std::string& paper, const std::string& text);
 
+      //write text on paper, starting at char at startPosition
+      //chars from text will only replace whitespace on paper. Other characters become ILLEGIBLE
+      void edit(std::string& paper, const std::string& text, unsigned int startPosition = 0);
+
       const static char ILLEGIBLE = '@';
 
    private:
