@@ -231,4 +231,12 @@ TEST_CASE("Pencil class tests") {
       pencil.edit(p, "artichoke" , 3);
       REQUIRE(p ==  "An artich@k@ay keeps the doctor away");
    }
+
+   SECTION("Editing obeys durability rules") {
+      std::string p("I        wha  is in a wonderball?");
+      tenDurPencil.edit(p, "wonder WhyY", 2);
+      REQUIRE( p == "I wonder @h@@ is in a wonderball?");
+      tenDurPencil.edit(p, "absolutely", 12);
+      REQUIRE( p == "I wonder @h@@ is in a wonderball?");
+   }
 }

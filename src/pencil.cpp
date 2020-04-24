@@ -65,15 +65,27 @@ void Pencil::erase(std::string& paper, const std::string& text) {
 }
 
 void Pencil::edit(std::string& paper, const std::string& text, unsigned int startPosition) {
-   for (int i = 0; i < text.length() and startPosition + i < paper.length(); i++) {
+   for (int i = 0; i < text.length() and startPosition + i < paper.length() and this->durability > 0; i++) {
       if (isspace(text[i]) or paper[startPosition + i] == text[i]) {
          continue;
       }
       if (isspace(paper[startPosition + i])) {
          paper[startPosition + i] = text[i];
+         if (text[i] >= 'A' and text[i] <= 'Z') {
+            if (this->durability > 1) {
+               this->durability--;
+            }
+            else {
+               paper[startPosition + i] = Pencil::ILLEGIBLE;
+            }
+         }
       }
       else { 
          paper[startPosition + i] = Pencil::ILLEGIBLE;
+         if (text[i] >= 'A' and text[i] <= 'Z' and this->durability > 1) {
+            this->durability--;
+         }
       }
+      this->durability--;
    }
 }
