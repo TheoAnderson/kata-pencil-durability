@@ -238,5 +238,20 @@ TEST_CASE("Pencil class tests") {
       REQUIRE( p == "I wonder @h@@ is in a wonderball?");
       tenDurPencil.edit(p, "absolutely", 12);
       REQUIRE( p == "I wonder @h@@ is in a wonderball?");
+      tenDurPencil.sharpen();
+      tenDurPencil.edit(p, "WONDER", 2);
+      REQUIRE( p == "I @@@@@r @h@@ is in a wonderball?");
+   }
+
+   SECTION("Editting cannot change whitespace forms") {
+      std::string p("I do\tnot\nlike that_Sam-I-Am");
+      pencil.edit(p, "I\ndo not\nlike\nthat_Sam-I-Am");
+      REQUIRE(p ==  "I do\tnot\nlike that_Sam-I-Am");
+   }
+
+   SECTION("Edit cannot erase characters") {
+      std::string p("Please Please Me");
+      pencil.edit(p, "lease  \n   ", 1);
+      REQUIRE(p ==  "Please Please Me");
    }
 }
