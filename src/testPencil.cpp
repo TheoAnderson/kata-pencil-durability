@@ -225,4 +225,10 @@ TEST_CASE("Pencil class tests") {
       pencil.edit(p, "onion" , 3);
       REQUIRE(p ==  "An onion a day keeps the doctor away");
    }
+
+   SECTION("Editing collision: example from documentation") {
+      std::string p("An       a day keeps the doctor away");
+      pencil.edit(p, "artichoke" , 3);
+      REQUIRE(p ==  "An artich@k@ay keeps the doctor away");
+   }
 }

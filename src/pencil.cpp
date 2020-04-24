@@ -69,6 +69,11 @@ void Pencil::edit(std::string& paper, const std::string& text, unsigned int star
       if (isspace(text[i]) or paper[startPosition + i] == text[i]) {
          continue;
       }
-      paper[startPosition + i] = text[i];
+      if (isspace(paper[startPosition + i])) {
+         paper[startPosition + i] = text[i];
+      }
+      else { 
+         paper[startPosition + i] = Pencil::ILLEGIBLE;
+      }
    }
 }
