@@ -194,4 +194,29 @@ TEST_CASE("Pencil class tests") {
       shortEraser.erase(p, "Bill");
       REQUIRE (p == "Buffalo B   ");            
    }   
+
+   SECTION("zero-length eraser") {
+      Pencil pen(100, 10, 0);
+      std::string p("E tu, Brute?");
+      pen.erase(p, "Brute");
+      REQUIRE(p == "E tu, Brute?");     
+   }
+
+   SECTION("Erasing entire string") {
+      std::string p("I used to be an adventurer like you.");
+      pencil.erase(p, "I used to be an adventurer like you.");
+      REQUIRE( p ==        "                                    ");
+   }
+
+   SECTION("Incomplete erasure with similar words") {
+      std::string p("snowball nowball owball wball");
+      shortEraser.erase(p, "owbal");
+      REQUIRE(p ==  "snowball nowball ow   l wball");
+   }
+
+   SECTION("Blanks don't wear down eraser") {
+      std::string p("lemma pie");
+      shortEraser.erase(p, "");
+      REQUIRE(p ==  "lemma pie");
+   }
 }
