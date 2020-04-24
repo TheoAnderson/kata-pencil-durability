@@ -260,4 +260,13 @@ TEST_CASE("Pencil class tests") {
       pencil.edit(p, "NAME], You are today's winner!", p.length() - 5);
       REQUIRE(p ==  "Congratulations [NAME], You are today's winner!");
    }
+
+   SECTION("Editing with blank texts") {
+      std::string p("");
+      pencil.edit(p, "elephant");
+      REQUIRE(p ==   "elephant");
+      pencil.edit(p, "", 4);
+      REQUIRE(p ==   "elephant");
+   }
+
 }
