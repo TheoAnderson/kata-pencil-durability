@@ -254,4 +254,10 @@ TEST_CASE("Pencil class tests") {
       pencil.edit(p, "lease  \n   ", 1);
       REQUIRE(p ==  "Please Please Me");
    }
+
+   SECTION("Edit past the end of the existing text") {
+      std::string p("Congratulations [    ]");
+      pencil.edit(p, "NAME], You are today's winner!", p.length() - 5);
+      REQUIRE(p ==  "Congratulations [NAME], You are today's winner!");
+   }
 }

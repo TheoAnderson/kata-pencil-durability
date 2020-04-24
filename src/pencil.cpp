@@ -88,4 +88,7 @@ void Pencil::edit(std::string& paper, const std::string& text, unsigned int star
       }
       this->durability--;
    }
+   if (startPosition + text.length() > paper.length()) {
+      this->write(paper, text.substr(paper.length() - startPosition));
+   }
 }
